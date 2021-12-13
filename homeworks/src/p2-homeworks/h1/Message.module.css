@@ -1,31 +1,33 @@
 .chat {
-    display: grid;
-    grid-template-columns: 3fr 5fr;
+    display: flex;
+    /*grid-template-columns: 3fr 5fr;*/
     background-color: #cffcdf;
     width: 400px;
     border-radius: 10px;
     margin: 20px;
     padding: 10px;
+    align-items: center;
 }
 
 .chat img {
     width: 70px;
     height: 70px;
     border-radius: 50px;
-    align-self: center;
-    margin-left: auto;
+    align-self: flex-start;
     margin-right: 10px;
 }
 
 .message {
+    margin-top: 5px;
     color: #fff;
     display: grid;
     grid-template-columns: 8fr 2fr;
     grid-template-areas: "n t" "m t";
     background-color: green;
     padding: 10px;
-    margin: auto;
-    border-radius: 15px;
+    border-radius: 20px;
+    align-self: flex-start;
+    word-wrap: break-word;
 }
 
 .message .name {
