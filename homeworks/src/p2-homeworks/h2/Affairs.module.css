@@ -3,11 +3,13 @@
 }
 
 .name {
-
+ margin-right: 5px;
 }
 
 .priority {
     margin-left: 10px;
+    font-weight: bold;
+    color: blueviolet;
 }
 
 .red {
