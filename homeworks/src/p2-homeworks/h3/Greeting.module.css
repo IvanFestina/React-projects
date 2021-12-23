@@ -3,5 +3,80 @@
 }
 
 .error {
-    border: 1px solid red;
+    color: red;
+    font-weight: bold;
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+
 }
+
+.form {
+    margin: 30px;
+    position: relative;
+    width: 200px;
+    padding-bottom: 5px;
+}
+
+.input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid gray;
+    outline: none;
+    padding: 0;
+    height: 25px
+}
+
+.inputError {
+    width: 100%;
+    border: none;
+    border-bottom: 5px solid red;
+    outline: none;
+    padding: 0;
+    height: 25px;
+    background-color: red;
+}
+
+
+.label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    transition: top 500ms ease, font-size 500ms ease;
+}
+
+.input:focus {
+        border-bottom: 2px solid #11998e;
+}
+.input:focus + .label {
+    top: -18px;
+    font-size: 14px;
+    color: #11998e;
+}
+
+.button {
+    position: absolute;
+    bottom: 1px;
+    right: 0;
+    height: 100%;
+    background-color: transparent;
+    font-weight: inherit;
+    border: none;
+    transition: background-color 600ms ease, color 600ms ease;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #97578c;
+    color: white;
+    border-radius: 5px;
+}
+
+.totalUsers {
+    margin-left: 130px;
+    padding-top: 10px;
+    font-size: 20px;
+    color: #11998e;
+}
+
