@@ -16,7 +16,7 @@ function App() {
     ]);
 
     function removeTask(id: string) {
-        let filteredTasks = tasks.filter(t => t.id != id);
+        let filteredTasks = tasks.filter(t => t.id !== id);
         setTasks(filteredTasks);
     }
 
@@ -24,6 +24,10 @@ function App() {
         let task = { id: v1(), title: title, isDone: false };
         let newTasks = [task, ...tasks];
         setTasks(newTasks);
+    }
+
+    function changeCheckBoxStatus (id: string, value: boolean) {
+    setTasks(tasks.map(t => t.id === id ? {...t, isDone:value} : t))
     }
 
     let [filter, setFilter] = useState<FilterValuesType>("all");
@@ -49,7 +53,8 @@ function App() {
                       tasks={tasksForTodolist}
                       removeTask={removeTask}
                       changeFilter={changeFilter}
-                      addTask={addTask} />
+                      addTask={addTask}
+                      changeCheckBoxStatus={changeCheckBoxStatus} />
         </div>
     );
 }
