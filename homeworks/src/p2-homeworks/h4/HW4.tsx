@@ -6,8 +6,10 @@ import SuperCheckbox from './common/c3-SuperCheckbox/SuperCheckbox'
 
 function HW4() {
     const [text, setText] = useState<string>('')
-    const error = text ? '' : 'Type something'
 
+    const error = text ?   '' : 'Type something'
+    console.log(text)
+    console.log(error)
     const showAlert = () => {
         if (error) {
             alert('введите текст...')
@@ -43,8 +45,7 @@ function HW4() {
                     default
                 </SuperButton>
 
-                <SuperButton
-                    red // пропсу с булевым значением не обязательно указывать true
+                <SuperButton red // пропсу с булевым значением не обязательно указывать true
                     onClick={showAlert}
                 >
                     delete {/*// название кнопки попадёт в children*/}
