@@ -1,0 +1,17 @@
+.todo-add__message {
+    position: absolute;
+    right: 8px;
+    top: 3px;
+    font-size: .8rem;
+    display: none;
+}
+
+.todo-add__message-error {
+    color: rgba(96, 110, 251, 0.97);
+    display: block;
+}
+
+.todo-add__message-success {
+    color: #67a14a;
+    display: block;
+}
