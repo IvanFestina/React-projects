@@ -1,0 +1,25 @@
+.wrapper {
+
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 150px;
+    border: solid 1px darkred;
+    border-radius: 5px;
+    background-color: rgba(251, 89, 116, 0.82);
+
+}
+
+.littleBox {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 40px;
+}
