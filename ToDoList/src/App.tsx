@@ -80,21 +80,23 @@ function App() {
     return (
         <div className="App">
             <AppBar position={'static'}>
-                <Toolbar>
-                    <IconButton>
+                <Toolbar style={{justifyContent: "space-between"}}>
+                    <IconButton edge="start" color="inherit" aria-label="menu">
                         <Menu/>
                     </IconButton>
                     <Typography variant={'h6'}>
                         News
                     </Typography>
-                    <Button color={'inherit'}>Login</Button>
+                    <Button color={'inherit'} variant={"outlined"}>Login</Button>
                 </Toolbar>
             </AppBar>
             <Container fixed>
-                <Grid container style={ { padding: '20px' } }>
-                    <AddItemForm addItem={addTodoList}/>
+                <Grid container justifyContent={"center"} style={{paddingLeft: '15px'}}>
+                    <Grid item style={{padding: '15px'}}>
+                        <AddItemForm addItem={addTodoList}/>
+                    </Grid>
                 </Grid>
-                <Grid container spacing={5}>
+                <Grid container spacing={5} justifyContent={"center"}>
                     {todolists.map(t => {
                         let tasksForTodolist = tasks[t.id];
                         if (t.filter === "active") {
@@ -104,20 +106,20 @@ function App() {
                             tasksForTodolist = tasks[t.id].filter(t => t.isDone === true);
                         }
                         return (<Grid item>
-                        <Paper elevation={3} style={ { padding: '10px'} }>
-                                <Todolist
-                                    todolistID={t.id}
-                                    title={t.title}
-                                    tasks={tasksForTodolist}
-                                    removeTask={removeTask}
-                                    changeFilter={changeFilter}
-                                    addTask={addTask}
-                                    changeTaskStatus={changeStatus}
-                                    filter={t.filter}
-                                    removeTodoList={removeTodoList}
-                                    changeTaskTitle={changeTaskTitle}
-                                    changeTodolistTitle={changeTodolistTitle}
-                                />
+                                <Paper elevation={5} style={{padding: '15px'}}>
+                                    <Todolist
+                                        todolistID={t.id}
+                                        title={t.title}
+                                        tasks={tasksForTodolist}
+                                        removeTask={removeTask}
+                                        changeFilter={changeFilter}
+                                        addTask={addTask}
+                                        changeTaskStatus={changeStatus}
+                                        filter={t.filter}
+                                        removeTodoList={removeTodoList}
+                                        changeTaskTitle={changeTaskTitle}
+                                        changeTodolistTitle={changeTodolistTitle}
+                                    />
                                 </Paper>
                             </Grid>
                         )
