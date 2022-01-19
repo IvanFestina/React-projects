@@ -15,13 +15,17 @@ export const Parametres = (props: ParametresPropsType) => {
     return (
         <div className={s.wrapper}>
             <div className={s.box}>
-                <div className={s.littleBox}>
-                    <div>Max value: <input onChange={inputOnChangeMaxValueHandler} type={"number"}
-                                           value={props.maxValue}/></div>
-                    <div>Min value: <input onChange={inputOnChangeStartValueHandler} type={"number"}
-                                           value={props.startValue}/></div>
+                <div className={s.valueBox}>
+                    <div>
+                        <span className={s.label}>Max value:</span>
+                        <input onChange={inputOnChangeMaxValueHandler} type={"number"}
+                               value={props.maxValue}/></div>
+                    <div>
+                        <span className={s.label}>Start value:</span>
+                        <input onChange={inputOnChangeStartValueHandler} type={"number"}
+                               value={props.startValue}/></div>
                 </div>
-                <div className={s.littleBox}>
+                <div className={s.buttonBox}>
                     <Button name={'Set'} callback={() => {
                     }} className={''}/>
                 </div>

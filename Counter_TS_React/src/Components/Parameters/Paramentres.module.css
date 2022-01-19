@@ -15,9 +15,30 @@
 
 }
 
-.littleBox {
+.valueBox {
     display: flex;
     flex-direction: column;
+    border: solid 1px darkred;
+    padding: 18px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.buttonBox {
+    display: flex;
+    justify-content: center;
+    border: solid 1px darkred;
+    padding: 9px;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.label {
+    min-width: 80px;
+    display: inline-block;
 }
 
 input {
