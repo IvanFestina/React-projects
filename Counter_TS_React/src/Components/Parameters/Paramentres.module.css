@@ -17,28 +17,27 @@
 
 .valueBox {
     display: flex;
-    flex-direction: column;
-    border: solid 1px darkred;
-    padding: 18px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    width: 100%;
-
+    padding: 0 20px 5px 20px;
 }
 
 .buttonBox {
     display: flex;
     justify-content: center;
-    border: solid 1px darkred;
     padding: 9px;
-    border-radius: 5px;
     width: 100%;
 
 }
 
 .label {
+    color: white;
     min-width: 80px;
     display: inline-block;
+}
+
+.labelWithError {
+    min-width: 80px;
+    display: inline-block;
+    color: rgba(118, 5, 5, 0.94);;
 }
 
 input {
