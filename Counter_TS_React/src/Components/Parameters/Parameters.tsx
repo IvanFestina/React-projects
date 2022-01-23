@@ -9,8 +9,8 @@ type ParametersPropsType = {
     startValue: number
     inputOnChangeStartValue: (value: number) => void
     inputOnChangeMaxValue: (value: number) => void
-    setSet: (set: boolean) => void
-    set: boolean
+    setLoadedSettings: (set: boolean) => void
+    loadedSettings: boolean
     setError: (error: boolean) => void
     error: boolean
     parametersToCounter: () => void
@@ -21,15 +21,16 @@ export const Parameters = (props: ParametersPropsType) => {
 
     const inputOnChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.inputOnChangeMaxValue(+e.currentTarget.value)
-        props.setSet(false)
+        props.setLoadedSettings(false)
     }
     const inputOnChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.inputOnChangeStartValue(+e.currentTarget.value)
-        props.setSet(false)
+        props.setLoadedSettings(false)
     }
     const onClickHandler = () => {
-        props.setSet(true)
+        props.setLoadedSettings(true)
         props.parametersToCounter()
+
     }
     const spanValueStyle = props.error ? s.labelWithError : s.label
 
@@ -51,7 +52,7 @@ export const Parameters = (props: ParametersPropsType) => {
                 </div>
                 <div className={s.buttonBox}>
                     <Button variant={'contained'}
-                            disabled={props.set || props.error}
+                            disabled={props.loadedSettings || props.error}
                             size={'small'}
                             onClick={onClickHandler}
                             startIcon={<DisplaySettingsIcon/>}>Set</Button>
