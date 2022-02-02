@@ -16,11 +16,11 @@ export const CounterWithLogic = (props: CounterType) => {
     const disabledInc = props.counter === maxNumber
     const counterStringStyle = disabledInc ? s.counterFinal : s.counterDefault;
 
-    const CounterIncrementHandler = () => {
+    const counterIncrementHandler = () => {
         props.setCounter(props.counter + 1)
         localStorage.setItem('counterValue', JSON.stringify(props.counter + 1))
     }
-    const ResetHandler = () => {
+    const resetHandler = () => {
         props.setCounter(props.startValue)
     }
 
@@ -37,9 +37,9 @@ export const CounterWithLogic = (props: CounterType) => {
                                  disableElevation>
                         <Button startIcon={<ArrowCircleUpIcon/>}
                                 disabled={disabledInc}
-                                onClick={CounterIncrementHandler}>Push me</Button>
+                                onClick={counterIncrementHandler}>Push me</Button>
                         <Button startIcon={<RestartAltIcon/>}
-                                onClick={ResetHandler}>Reset me</Button>
+                                onClick={resetHandler}>Reset me</Button>
                     </ButtonGroup>
                 </div>
             </div>
