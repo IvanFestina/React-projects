@@ -2,6 +2,8 @@ import s from "./Paramentres.module.css";
 import {ChangeEvent} from "react";
 import {Button, Input, TextField} from "@mui/material";
 import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
+import {SetLoadedSettingsAC} from "../../bll/counterReducer";
+import {useDispatch} from "react-redux";
 
 
 type ParametersPropsType = {
@@ -9,9 +11,7 @@ type ParametersPropsType = {
     startValue: number
     inputOnChangeStartValue: (value: number) => void
     inputOnChangeMaxValue: (value: number) => void
-    setLoadedSettings: (set: boolean) => void
     loadedSettings: boolean
-    setError: (error: boolean) => void
     error: boolean
     parametersToCounter: () => void
 
@@ -19,16 +19,18 @@ type ParametersPropsType = {
 
 export const Parameters = (props: ParametersPropsType) => {
 
+    const dispatch = useDispatch()
+
     const inputOnChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.inputOnChangeMaxValue(+e.currentTarget.value)
-        props.setLoadedSettings(false)
+        dispatch(SetLoadedSettingsAC(false))
     }
     const inputOnChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.inputOnChangeStartValue(+e.currentTarget.value)
-        props.setLoadedSettings(false)
+        dispatch(SetLoadedSettingsAC(false))
     }
     const onClickHandler = () => {
-        props.setLoadedSettings(true)
+        dispatch(SetLoadedSettingsAC(true))
         props.parametersToCounter()
 
     }

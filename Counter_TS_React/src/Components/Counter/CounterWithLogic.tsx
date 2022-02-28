@@ -3,32 +3,37 @@ import {Button, ButtonGroup} from "@mui/material";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import React from "react";
+import {RootReducerType} from "../../bll/Store";
+import {useDispatch, useSelector} from "react-redux";
+import {CounterValueUpAC, SetCounterValueAC} from "../../bll/counterReducer";
 
 type CounterType = {
-    counter: number
-    setCounter: (counter: number) => void
     maxValue: number
     startValue: number
 }
 
 export const CounterWithLogic = (props: CounterType) => {
+
+    const counterValue = useSelector<RootReducerType, number>(state => state.counter.counterValue)
+    const dispatch = useDispatch()
+
     let maxNumber = props.maxValue;
-    const disabledInc = props.counter === maxNumber
+    const disabledInc = counterValue === maxNumber
     const counterStringStyle = disabledInc ? s.counterFinal : s.counterDefault;
 
     const counterIncrementHandler = () => {
-        props.setCounter(props.counter + 1)
-        localStorage.setItem('counterValue', JSON.stringify(props.counter + 1))
+        dispatch(CounterValueUpAC())
+        localStorage.setItem('counterValue', JSON.stringify(counterValue + 1))
     }
     const resetHandler = () => {
-        props.setCounter(props.startValue)
+        dispatch(SetCounterValueAC(props.startValue))
     }
 
     return (
         <div className={s.wrapper}>
             <div className={s.box}>
                 <div className={s.littleBox}>
-                    <div className={counterStringStyle}>{props.counter}</div>
+                    <div className={counterStringStyle}>{counterValue}</div>
                 </div>
                 <div className={s.littleBox}>
                     <ButtonGroup style={{paddingTop: '15px'}}
