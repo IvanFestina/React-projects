@@ -3,7 +3,7 @@ import {Button, ButtonGroup} from "@mui/material";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import React from "react";
-import {RootReducerType} from "../../bll/Store";
+import {AppStateType} from "../../bll/Store";
 import {useDispatch, useSelector} from "react-redux";
 import {CounterValueUpAC, SetCounterValueAC} from "../../bll/counterReducer";
 
@@ -14,7 +14,7 @@ type CounterType = {
 
 export const CounterWithLogic = (props: CounterType) => {
 
-    const counterValue = useSelector<RootReducerType, number>(state => state.counter.counterValue)
+    const counterValue = useSelector<AppStateType, number>(state => state.counter.counterValue)
     const dispatch = useDispatch()
 
     let maxNumber = props.maxValue;
@@ -23,7 +23,6 @@ export const CounterWithLogic = (props: CounterType) => {
 
     const counterIncrementHandler = () => {
         dispatch(CounterValueUpAC())
-        localStorage.setItem('counterValue', JSON.stringify(counterValue + 1))
     }
     const resetHandler = () => {
         dispatch(SetCounterValueAC(props.startValue))

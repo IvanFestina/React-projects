@@ -43,11 +43,6 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
             return {
                 ...state, loadedSettings: action.loadedSettings
             }
-
-        // case "SET-COUNTER-VALUE-FROM-LS-AC":
-        //     return {
-        //         ...state, counterValue: action.counterValue
-        //     }
         default:
             return state
     }
@@ -55,7 +50,6 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
 
 
 export type ActionType = CounterValueUpActionType
-// | SetCounterValueFromLocalStorageActionType
     | SetStartValueActionType
     | SetMaxValueActionType
     | SetCounterValueActionType
@@ -69,7 +63,6 @@ export type SetCounterValueActionType = ReturnType<typeof SetCounterValueAC>
 export type SetErrorActionType = ReturnType<typeof SetErrorAC>
 export type SetLoadedSettingsActionType = ReturnType<typeof SetLoadedSettingsAC>
 
-// export type SetCounterValueFromLocalStorageActionType = ReturnType<typeof SetCounterValueFromLocalStorageAC>
 
 export const CounterValueUpAC = () => ({type: "COUNTER-UP"} as const)
 export const SetCounterValueAC = (value: number) => ({type: "SET-COUNTER-VALUE", value} as const)
@@ -77,11 +70,6 @@ export const SetStartValueAC = (value: number) => ({type: "SET-START-VALUE", val
 export const SetMaxValueAC = (value: number) => ({type: "SET-MAX-VALUE", value} as const)
 export const SetErrorAC = (error: boolean) => ({type: "SET-ERROR", error} as const)
 export const SetLoadedSettingsAC = (loadedSettings: boolean) => ({type: "SET-LOADED-SETTINGS", loadedSettings} as const)
-
-// export const SetCounterValueFromLocalStorageAC = (counterValue: number) => ({
-//     type: "SET-COUNTER-VALUE-FROM-LS-AC",
-//     counterValue
-// } as const)
 
 
 //

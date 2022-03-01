@@ -16,7 +16,7 @@ type CounterType = {
 }
 export const CounterRenderer = (props: CounterType) => {
 
-//Здесь логика отрисовки в зависимости от значиния ошибки в useState и от засетанных параметров
+//Здесь логика отрисовки в зависимости от значиния ошибки и от засетанных параметров
         return (
             props.error ? <IncorrectValue/>
                 : !props.loadedSettings ? <Request/>
