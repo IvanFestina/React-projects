@@ -1,0 +1,46 @@
+.wrapper {
+    margin-left: 10px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 150px;
+    border: solid 1px darkred;
+    border-radius: 5px;
+    background-color: rgba(251, 89, 116, 0.82);
+}
+
+.littleBox {
+    display: flex;
+    flex-direction: row;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: fantasy;
+    font-size: 25px;
+    color: white;
+    height: 45px;
+}
+
+.counterDefault {
+    font-family: fantasy;
+    font-size: 35px;
+    color: white;
+    height: 45px;
+
+}
+
+.counterFinal {
+    font-family: fantasy;
+    font-size: 35px;
+    color: rgba(118, 5, 5, 0.94);
+    height: 45px;
+}
+

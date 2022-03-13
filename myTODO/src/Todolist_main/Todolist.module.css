@@ -1,0 +1,48 @@
+.wrapper {
+    background-image: linear-gradient(to bottom, #ddd6f3, #faaca8);
+    border: 1px solid #cccccc;
+    padding: 20px;
+    border-radius: 9px;
+}
+
+.App > div {
+    margin-right: 50px;
+}
+
+.add_input {
+    padding: 3px;
+    background: #f7f4f4;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+}
+
+.taskNav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.taskAddTitle {
+    border-bottom: 1px solid #e7e6e6;
+    font-weight: 400;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.taskAddForm {
+    display: flex;
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+}
+
+.message_wrapper {
+    position: relative;
+
+}
+

@@ -1,0 +1,12 @@
+.App {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #43cea2,#185a9d);
+    padding: 20px;
+}
+
+
+/*linear-gradient(to bottom, rgba(51, 69, 252, 0.97), rgba(185, 252, 255, 0.97));*/
