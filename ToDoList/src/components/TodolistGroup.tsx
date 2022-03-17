@@ -10,7 +10,7 @@ import {
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../state/store";
 import React, {useCallback, useEffect} from "react";
-import {addTasksTC, removeTasksTC, updateTaskStatusTC} from "../state/tasks-reducer";
+import {addTasksTC, removeTasksTC} from "../state/tasks-reducer";
 import {TaskStatuses} from "../api/todolists-api";
 import Grid from "@mui/material/Grid";
 import {AddItemForm} from "./AddItemForm";
@@ -77,6 +77,7 @@ export const TodolistGroup = () => {
                             <Todolist
                                 id={tl.id}
                                 title={tl.title}
+                                entityStatus={tl.entityStatus}
                                 tasks={allTodolistTasks}
                                 removeTask={removeTask}
                                 changeFilter={changeFilter}
