@@ -37,7 +37,10 @@ export const todolistsAPI = {
 }
 export const authAPI = {
    login(data: LoginParamsType) {
-    return instance.post<LoginParamsType, AxiosResponse<ResponseType<{userId: number}>>>(`/auth/login`, data)
+    return instance.post<LoginParamsType, AxiosResponse<ResponseType<{userId: number}>>>(`auth/login`, data)
+   },
+   logout() {
+   return instance.delete<ResponseType>(`auth/login`)
    },
    me() {
     return instance.get<ResponseType<MeResponseType>>(`auth/me`)
@@ -109,6 +112,17 @@ export type UpdateTaskModelType = {
     startDate: string
     deadline: string
 }
+export type UpdateTaskModelType2 = {
+    title: string
+    description: string
+    status: TaskStatuses
+    priority: TaskPriorities
+    startDate: string
+    deadline: string
+}
+
+
+
 type GetTasksResponse = {
     error: string | null
     totalCount: number
