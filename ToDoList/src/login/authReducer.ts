@@ -1,7 +1,11 @@
 import {Dispatch} from 'redux'
-import {SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from '../../app/app-reducer'
-import {authAPI, LoginParamsType, todolistsAPI} from "../../api/todolists-api";
-import {handleServerAppError, handleServerNetworkError} from "../../utils/error-utils";
+import {authAPI, LoginParamsType, todolistsAPI} from "../api/todolists-api";
+import {handleServerAppError, handleServerNetworkError} from "../utils/error-utils";
+import {addTaskAC} from "../features/TodolistsList/tasks-reducer";
+import {Simulate} from "react-dom/test-utils";
+import {initializeAppTC, SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from "../app/app-reducer";
+import {ThunkDispatch} from "redux-thunk";
+import {AppRootStateType} from "../app/store";
 
 const initialState = {
     isLoggedIn: false
@@ -21,15 +25,16 @@ export const setIsLoggedInAC = (value: boolean) =>
     ({type: 'login/SET-IS-LOGGED-IN', value} as const)
 
 // thunks
-export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsType>) => {
+export const loginTC = (data: LoginParamsType) => (dispatch: ThunkDispatch<AppRootStateType, void, ActionsType>) => {
     dispatch(setAppStatusAC('loading'))
     authAPI.login(data)
         .then(res => {
             if (res.data.resultCode === 0) {
                 dispatch(setAppStatusAC('succeeded'))
-                dispatch(setIsLoggedInAC(true))
+                setIsLoggedInAC(true)
+                dispatch(initializeAppTC())
             } else {
-                handleServerAppError(res.data, dispatch)
+                handleServerAppError(res.data, dispatch);
             }
         })
         .catch(error => {
@@ -43,8 +48,9 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
             if (res.data.resultCode === 0) {
                 dispatch(setAppStatusAC('succeeded'))
                 dispatch(setIsLoggedInAC(false))
+
             } else {
-                handleServerAppError(res.data, dispatch)
+                handleServerAppError(res.data, dispatch);
             }
         })
         .catch(error => {
@@ -53,8 +59,6 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
 }
 
 
-
 // types
-type ActionsType = ReturnType<typeof setIsLoggedInAC>
-| SetAppStatusActionType
-| SetAppErrorActionType
+type ActionsType = ReturnType<typeof setIsLoggedInAC> | SetAppStatusActionType | SetAppErrorActionType
+
