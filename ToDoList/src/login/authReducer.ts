@@ -6,6 +6,7 @@ import {Simulate} from "react-dom/test-utils";
 import {initializeAppTC, SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from "../app/app-reducer";
 import {ThunkDispatch} from "redux-thunk";
 import {AppRootStateType} from "../app/store";
+import {ClearDataActionType, clearTodosDataAC} from "../features/TodolistsList/todolists-reducer";
 
 const initialState = {
     isLoggedIn: false
@@ -48,6 +49,7 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
             if (res.data.resultCode === 0) {
                 dispatch(setAppStatusAC('succeeded'))
                 dispatch(setIsLoggedInAC(false))
+                dispatch(clearTodosDataAC())
 
             } else {
                 handleServerAppError(res.data, dispatch);
@@ -60,5 +62,8 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
 
 
 // types
-type ActionsType = ReturnType<typeof setIsLoggedInAC> | SetAppStatusActionType | SetAppErrorActionType
+type ActionsType = ReturnType<typeof setIsLoggedInAC>
+| SetAppStatusActionType
+| SetAppErrorActionType
+| ClearDataActionType
 
