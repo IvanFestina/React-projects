@@ -1,43 +1,21 @@
-import React, {useEffect} from 'react'
+import React, {useReducer} from 'react'
 import './App.css'
-import {TodolistsList} from '../features/TodolistsList/TodolistsList'
-import {useDispatch, useSelector} from 'react-redux'
-import {AppRootStateType} from './store'
-import {initializeAppTC, RequestStatusType} from './app-reducer'
+import { TodolistsList } from '../features/TodolistsList/TodolistsList'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import LinearProgress from '@mui/material/LinearProgress';
-import {Menu} from '@mui/icons-material';
-import {ErrorSnackbar} from '../components/ErrorSnackbar/ErrorSnackbar'
-import {Navigate, Route, Routes} from "react-router-dom";
-import {Login} from "../login/Login";
-import {CircularProgress} from "@mui/material";
-import {logoutTC} from "../login/authReducer";
+import { Menu } from '@mui/icons-material';
+import {LinearProgress} from "@mui/material";
+import {AppRootStateType, useAppSelector} from "./store";
+import {RequestStatusType} from "./AppReducer";
+import {ErrorSnackbar} from "../components/ErrorSnackbar/ErrorSnackbar";
 
-type PropsType = {
-    demo?: boolean
-}
 
-function App({demo = false}: PropsType) {
-    const dispatch = useDispatch()
-    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
-    const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
-    useEffect(() => {
-        dispatch(initializeAppTC())
-    }, [])
-
-    if (!isInitialized) {
-        return <div
-            style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%'}}>
-            <CircularProgress/>
-        </div>
-    }
-
+function App() {
+    const status = useAppSelector<RequestStatusType>(state => state.app.status)
 
     return (
         <div className="App">
@@ -50,17 +28,12 @@ function App({demo = false}: PropsType) {
                     <Typography variant="h6">
                         News
                     </Typography>
-                    {isLoggedIn && <Button onClick={() => dispatch(logoutTC())} color="inherit">Log out</Button>}
+                    <Button color="inherit">Login</Button>
                 </Toolbar>
-                {status === 'loading' && <LinearProgress/>}
             </AppBar>
+            { status === 'loading' && <LinearProgress color={"secondary"}/> }
             <Container fixed>
-                <Routes>
-                    <Route path='/' element={<TodolistsList demo={demo}/>}/>
-                    <Route path='login' element={<Login/>}/>
-                    <Route path='404' element={<h1>404. Page not found</h1>}/>
-                    <Route path='*' element={<Navigate to='/404'/>}/>
-                </Routes>
+                <TodolistsList/>
             </Container>
         </div>
     )
