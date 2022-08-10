@@ -9,14 +9,6 @@ let initialState: InitialStateType = {
     error: false,
 }
 
-export type InitialStateType = {
-    counterValue: number
-    startValue: number
-    maxValue: number
-    loadedSettings: boolean
-    error: boolean
-}
-
 export const counterReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
         case "COUNTER-UP":
@@ -48,6 +40,33 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
     }
 }
 
+// A C T I O N S
+
+export const CounterValueUpAC = () => ({type: "COUNTER-UP"} as const)
+export const SetCounterValueAC = (value: number) => ({type: "SET-COUNTER-VALUE", value} as const)
+export const SetStartValueAC = (value: number) => ({type: "SET-START-VALUE", value} as const)
+export const SetMaxValueAC = (value: number) => ({type: "SET-MAX-VALUE", value} as const)
+export const SetErrorAC = (error: boolean) => ({type: "SET-ERROR", error} as const)
+export const SetLoadedSettingsAC = (loadedSettings: boolean) => ({type: "SET-LOADED-SETTINGS", loadedSettings} as const)
+
+
+
+// // THUNK - функция - для dispatch action и работа с sideEffects
+//
+// const CounterSetStartValueTC = (value: number) => (dispatch: Dispatch) => {
+//     localStorage.setItem('startValue', JSON.stringify(value))
+// }
+
+// T Y P E S
+
+
+export type InitialStateType = {
+    counterValue: number
+    startValue: number
+    maxValue: number
+    loadedSettings: boolean
+    error: boolean
+}
 
 export type ActionType = CounterValueUpActionType
     | SetStartValueActionType
@@ -63,18 +82,3 @@ export type SetCounterValueActionType = ReturnType<typeof SetCounterValueAC>
 export type SetErrorActionType = ReturnType<typeof SetErrorAC>
 export type SetLoadedSettingsActionType = ReturnType<typeof SetLoadedSettingsAC>
 
-
-export const CounterValueUpAC = () => ({type: "COUNTER-UP"} as const)
-export const SetCounterValueAC = (value: number) => ({type: "SET-COUNTER-VALUE", value} as const)
-export const SetStartValueAC = (value: number) => ({type: "SET-START-VALUE", value} as const)
-export const SetMaxValueAC = (value: number) => ({type: "SET-MAX-VALUE", value} as const)
-export const SetErrorAC = (error: boolean) => ({type: "SET-ERROR", error} as const)
-export const SetLoadedSettingsAC = (loadedSettings: boolean) => ({type: "SET-LOADED-SETTINGS", loadedSettings} as const)
-
-
-//
-// // THUNK - функция - для dispatch action и работа с sideEffects
-//
-// const CounterSetStartValueTC = (value: number) => (dispatch: Dispatch) => {
-//     localStorage.setItem('startValue', JSON.stringify(value))
-// }
