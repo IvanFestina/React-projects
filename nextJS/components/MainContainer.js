@@ -3,6 +3,7 @@ import A from "./A";
 
 const MainContainer = ({children}) => {
     return (
+        
         <>
             <div className={'navbar'}>
                 <A href={'/'} text={'Main'}/>
@@ -23,6 +24,7 @@ const MainContainer = ({children}) => {
                   }
                 `}
             </style>
+
         </>
     );
 };
